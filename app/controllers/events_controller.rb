@@ -11,11 +11,11 @@ render json: parsed["events"]
 end
 
 def getCategory
-
+@key='Bearer '+EVENT_API_TOKEN
 @categories= RestClient::Request.execute(method: :get, url: 'https://www.eventbriteapi.com/v3/categories/',
                             payload: 'foo', headers: { 
                                 'Content-Type': 'application/json',
-                                'Authorization': `Bearer #{EVENT_API_TOKEN}`,})
+                                'Authorization': @key})
 parsed = JSON.parse(@categories)
 render json: parsed["categories"]
 
