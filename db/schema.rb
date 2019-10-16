@@ -17,15 +17,13 @@ ActiveRecord::Schema.define(version: 2019_10_10_140547) do
 
   create_table "user_events", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "event_id"
+    t.string "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "email"
     t.string "password_digest"
     t.datetime "created_at", null: false
