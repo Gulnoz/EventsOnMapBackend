@@ -4,9 +4,8 @@ class EventsController < ApplicationController
 EVENT_API_TOKEN = ENV['event_brite_api_token']
 
 def index
-    @link='https://www.eventbriteapi.com/v3/events/search?expand=venue,category&token='+EVENT_API_TOKEN+'&location.address=newyork'
-# '&location.latitude=40.744750&location.longitude=-73.904111'
-    @events= RestClient.get (@link)
+    @link='https://www.eventbriteapi.com/v3/events/search/?expand=venue,category&token='+EVENT_API_TOKEN+'&location.latitude=40.741369&location.longitude=-73.941860'
+@events= RestClient.get (@link)
 parsed = JSON.parse(@events)
 render json: parsed["events"]
 end
