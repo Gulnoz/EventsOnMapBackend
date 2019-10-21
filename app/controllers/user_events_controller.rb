@@ -13,15 +13,16 @@ before_action :find_user_event, only: [ :show, :update]
 
    def create 
       @user_event=UserEvent.find_by(event_id: params[:event_id])
+     
       if @user_event
-         { 
+         
             render json: {message: 'Event already exist!'}
-         }
+      
       else
-         {
+         
             @user_event=UserEvent.create!(user_event_params)
             render json: UserEventSerializer.new(@user_event)
-         }
+      end
       
    end
 
