@@ -10,17 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_140547) do
+ActiveRecord::Schema.define(version: 2019_10_23_214547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "user_events", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "event_id"
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_events_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "image"
+    t.string "url"
+    t.bigint "category_id"
+    t.bigint "user_id"
+    t.string "address"
+    t.string "location_lat"
+    t.string "location_long"
+    t.string "date"
+    t.string "start_time"
+    t.string "end_time"
+    t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "favorite_events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_favorite_events_on_event_id"
+    t.index ["user_id"], name: "index_favorite_events_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,5 +52,8 @@ ActiveRecord::Schema.define(version: 2019_10_10_140547) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "user_events", "users"
+  add_foreign_key "events", "categories"
+  add_foreign_key "events", "users"
+  add_foreign_key "favorite_events", "events"
+  add_foreign_key "favorite_events", "users"
 end
