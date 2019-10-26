@@ -1,8 +1,7 @@
 require 'rest-client'
 class EventsController < ApplicationController
-# before_action :categories, only: [:realEvents]
 before_action :event_params, only: [:create, :update]
-EVENT_API_TOKEN = ENV['event_brite_api_token']
+
 
 def index
     @events=Event.all
@@ -25,11 +24,7 @@ def update
     render json: @event
 end
 
-def destroy
 end
-
-
-
 
 private
 
