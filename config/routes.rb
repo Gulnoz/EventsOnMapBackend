@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 #  get '/real/events',  to: 'events#realEvents'
 # get '/categories',  to: 'events#getCategory'
 get '/events/categories/:id',  to: 'events#eventByCategory'
-post '/login', to: 'users#login'
+post '/login', to: 'auth#login'
+get '/auth', to: 'auth#persist'
 end
