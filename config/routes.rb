@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :favorite_events
   resources :users
+   resources :auth
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #  get '/real/events',  to: 'events#realEvents'
 # get '/categories',  to: 'events#getCategory'

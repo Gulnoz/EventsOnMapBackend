@@ -12,7 +12,7 @@ before_action :find_favorite_event, only: [ :show, :update]
    end
 
    def create 
-      @favorite_event=FavoriteEvent.find_by(event_id: params[:event_id])
+      @favorite_event=FavoriteEvent.find_by(user_id: params[:user_id], event_id: params[:event_id])
      
       if @favorite_event
          
