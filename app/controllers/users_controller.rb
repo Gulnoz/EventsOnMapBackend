@@ -21,7 +21,7 @@ before_action :find_user, only: [:destroy, :update, :show]
 # end
 
     def index
-       @users=User.all
+       @users = User.all
        render json: UserSerializer.new(@users)
     end
     
@@ -32,7 +32,7 @@ before_action :find_user, only: [:destroy, :update, :show]
 
     def create 
      
-       @user=User.create!(user_params)
+       @user = User.create!(user_params)
        if @user.valid?
       
    token = JWT.encode({user_id: @user.id}, MY_SECRET, 'HS256')
@@ -55,7 +55,7 @@ before_action :find_user, only: [:destroy, :update, :show]
     private
 
     def find_user
-       @user=User.find(params[:id])
+       @user = User.find(params[:id])
     end
 
     def user_params
