@@ -21,8 +21,10 @@ def persist
             user = User.find(user_id)
             render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
         rescue JWT::DecodeError
-            nil
+             render json: ({'error':'test'})
         end
+    else 
+    render json: ({'error':'Not exist'})
     end
 end
 
