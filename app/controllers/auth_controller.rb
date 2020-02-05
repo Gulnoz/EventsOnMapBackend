@@ -22,6 +22,7 @@ def persist
         render json: user
         rescue JWT::DecodeError
             nil
+        end
     end
 end
 
