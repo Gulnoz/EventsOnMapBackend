@@ -16,7 +16,6 @@ end
 def persist
     
     if request.headers['Authorization']
-        byebug
         encoded_token = request.headers['Authorization'].split(' ')[1]
         begin
             token = JWT.decode(encoded_token, MY_SECRET)
